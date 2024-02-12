@@ -62,4 +62,4 @@ def delete(name):
 
     del COUNTERS[name]
 
-    return {name: COUNTERS[name]}, status.HTTP_204_NO_CONTENT
+    return status.HTTP_204_NO_CONTENT
