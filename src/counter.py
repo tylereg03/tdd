@@ -60,6 +60,6 @@ def delete(name):
     if name not in COUNTERS:
         return {"Message": f"Counter {name} not found"}, status.HTTP_404_NOT_FOUND
 
-    COUNTERS.remove(name)
+    del COUNTERS[name]
 
     return {name: COUNTERS[name]}, status.HTTP_204_NO_CONTENT
