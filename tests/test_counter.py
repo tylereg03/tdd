@@ -76,3 +76,14 @@ class CounterTest(TestCase):
         # Check status code 404 with uncreated counter
         result = self.client.get('/counters/apple')
         self.assertEqual(result.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_delete_a_counter(self):
+        c_result = self.client.post('/counters/delete_counter')
+        self.assertEqual(c_result.status_code, status.HTTP_201_CREATED)
+
+        result = self.client.delete('/counters/delete_counter')
+
+        self.assertEqual(result.status_code, status.HTTP_204_NO_CONTENT)
+
+        result = self.client.put('/counters/delete_counter')
+        self.assertEqual(result.status_code, status.HTTP_404_NOT_FOUND)
